@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Front end</title>
+    <link rel="stylesheet" href="assets/css/style2.css">
+</head>
+<body>
+
+<div id="my-app" :style="{'width': `${board.w}px`, 'height': `${board.h}px`, 'left': `${board.pos.x}px`, 'top': `${board.pos.y}px`}">
+    <svg :viewBox="`0 0 ${board.w} ${board.h}`" :style="{'width': `${board.w}px`, 'height': `${board.h}px`}">
+        <line :x1="getPositionsForRelation(relation.fromElement).x"
+              :y1="getPositionsForRelation(relation.fromElement).y"
+              :x2="getPositionsForRelation(relation.toElement).x"
+              :y2="getPositionsForRelation(relation.toElement).y"
+              v-for="relation in relations"
+              ref="lines"
+              stroke-width="3"></line>
+    </svg>
+
+    <div class="element"
+         :style="{'left': `${element.pos.x}px`, 'top': `${element.pos.y}px`}"
+         @mouseenter="showSections(element)"
+         @mouseleave="hiddenSections()"
+         @mousedown.stop="moveElement(element)"
+         v-for="element in elements">
+        <template v-if="hoverElement === element || hoverElement === 'all'">
+            <div class="dragSection"></div>
+            <div class="sections">
+                <div class="section"
+                     @mousedown.shift.stop="moveAbstractElement(element, 1)"
+                     @mousedown.stop="createFromSection(element, 1)"
+                     style="animation-delay: .1s;">
+                    <span>1</span>
+                </div>
+                <div class="section"
+                     @mousedown.shift.stop="moveAbstractElement(element, 2)"
+                     @mousedown.stop="createFromSection(element, 2)"
+                     style="animation-delay: .2s;">
+                    <span>2</span>
+                </div>
+                <div class="section"
+                     @mousedown.shift.stop="moveAbstractElement(element, 4)"
+                     @mousedown.stop="createFromSection(element, 4)"
+                     style="animation-delay: .4s;">
+                    <span>4</span>
+                </div>
+                <div class="section"
+                     @mousedown.shift.stop="moveAbstractElement(element, 3)"
+                     @mousedown.stop="createFromSection(element, 3)"
+                     style="animation-delay: .3s;">
+                    <span>3</span>
+                </div>
+            </div>
+        </template>
+    </div>
+</div>
+
+<script src="assets/js/vue.min.js"></script>
+<script src="assets/js/main2.js" type="module"></script>
+</body>
+</html>

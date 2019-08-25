@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FRONT END!!!!</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<div id="my-app" :style="{'width': `${board.w}px`, 'height': `${board.h}px`, 'top': `${board.pos.y}px`, 'left': `${board.pos.x}px`}">
+    <svg :viewBox="`0 0 ${board.w} ${board.h}`" :style="{'width': `${board.w}px`, 'height': `${board.h}px`}">
+        <line v-for="relation in relations"
+              :x1="getOffsetForRelation(relation.fromElement).x"
+              :y1="getOffsetForRelation(relation.fromElement).y"
+              :x2="getOffsetForRelation(relation.toElement).x"
+              :y2="getOffsetForRelation(relation.toElement).y"
+              stroke="black"
+              stroke-width="3"></line>
+    </svg>
+
+    <div class="abstractElement"
+         v-if="abstractElementObj"
+         :style="{'top': `${abstractElementObj.pos.y}px`, 'left': `${abstractElementObj.pos.x}px`}">{{ abstractElement.section }}</div>
+
+    <div class="element"
+         @mousedown.stop="moveElement(element)"
+         @mouseenter="showSections(element)"
+         @mouseleave="hiddenSections(element)"
+         v-for="element in elements"
+         :style="{'top': `${element.pos.y}px`, 'left': `${element.pos.x}px`}">
+        <template v-if="hoverElement === element || hoverElement === 'all'">
+            <div class="buttons">
+                <button class="remove">X</button>
+                <button class="edit">E</button>
+            </div>
+            <div class="circleMove"></div>
+            <div class="sections">
+                <div class="section"
+                     @mousedown.stop.shift="abstractElement(element, 1)"
+                     @mouseup.stop="createRelationFromAbstractElement(element, 1)"
+                     @mousedown.stop="createElementFromSection(element, 1)">
+                    <span>1</span>
+                </div>
+                <div class="section"
+                     @mousedown.stop.shift="abstractElement(element, 2)"
+                     @mouseup.stop="createRelationFromAbstractElement(element, 2)"
+                     @mousedown.stop="createElementFromSection(element, 2)">
+                    <span>2</span>
+                </div>
+                <div class="section"
+                     @mousedown.stop.shift="abstractElement(element, 4)"
+                     @mouseup.stop="createRelationFromAbstractElement(element, 4)"
+                     @mousedown.stop="createElementFromSection(element, 4)">
+                    <span>4</span>
+                </div>
+                <div class="section"
+                     @mousedown.stop.shift="abstractElement(element, 3)"
+                     @mouseup.stop="createRelationFromAbstractElement(element, 3)"
+                     @mousedown.stop="createElementFromSection(element, 3)">
+                    <span>3</span>
+                </div>
+            </div>
+        </template>
+    </div>
+</div>
+
+
+<script src="assets/js/vue.min.js"></script>
+<script src="assets/js/main.js" type="module"></script>
+</body>
+</html>
