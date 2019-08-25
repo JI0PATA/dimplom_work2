@@ -1,0 +1,91 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+#app {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.screen {
+    padding: 70px 30px;
+    width: 60vw;
+    margin: auto;
+}
+h2 {
+    margin-bottom: 30px;
+    text-align: center;
+}
+.screen-content {
+    line-height: 1.8;
+    width: 60%;
+    margin: 0 auto;
+}
+button {
+    padding: 10px;
+    margin-top: 30px;
+    background: #ffffff;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.screen-1 {
+    background: #b6e7ff;
+}
+.screen-2 {
+    background: #ecb9ec;
+}
+.screen-3 {
+    background: #ffb6b6;
+}
+
+
+.screen {
+    transition: all .2s ease-in;
+    transform: translateX(0px);
+}
+
+
+.left .screen-enter-active {
+    transform: translateX(50px);
+    opacity: 0;
+}
+
+.left .screen-leave-active {
+    transform: translateX(-50px);
+}
+
+
+.right .screen-enter-active {
+    transform: translateX(-50px);
+    opacity: 0;
+}
+
+.right .screen-leave-active {
+    transform: translateX(50px);
+}
+
+.top .screen-enter-active {
+    transform: translateY(50px);
+    opacity: 0;
+}
+
+.top .screen-leave-active {
+    transform: translateY(-50px);
+}
+
+.bottom .screen-enter-active {
+    transform: translateY(-50px);
+    opacity: 0;
+}
+
+.bottom .screen-leave-active {
+    transform: translateY(50px);
+}
+
+.screen-enter,
+.screen-leave-to {
+    opacity: 0;
+} 

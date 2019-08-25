@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0">
+    <title>Vue animation</title>
+
+    <link rel="stylesheet" href="main.css">
+
+    <script defer src="vue.min.js"></script>
+    <script defer src="main.js"></script>
+</head>
+<body>
+
+<div id="app" :class="direction">
+
+    <transition name="screen" mode="out-in">
+        <div class="screen screen-1" v-if="page === 'screen-1'" key="screen-1">
+            <h2>Screen 1</h2>
+            <div class="screen-content">
+                <div>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, animi error porro quasi suscipit temporibus totam? Ad atque blanditiis deleniti dolorum exercitationem explicabo numquam, quibusdam sed voluptate. Aliquid amet animi atque beatae blanditiis consequatur ex facere, illo ipsa ipsum iusto libero molestiae necessitatibus neque nihil, non quasi quia quo rem sequi similique sit ut vitae. Esse necessitatibus nostrum numquam quasi voluptatibus! Assumenda cupiditate delectus, distinctio eveniet facilis illum ipsum laborum magni modi molestiae nam necessitatibus nemo nesciunt, officiis optio quae quos recusandae reprehenderit repudiandae, similique suscipit temporibus unde velit voluptas voluptate voluptatem voluptatum! Aliquam consequatur dolores minima porro possimus rem.
+                </div>
+                <button @click="direction = 'left'; page = 'screen-3'">Left</button>
+                <button @click="direction = 'top'; page = 'screen-3'">Top</button>
+                <button @click="direction = 'bottom'; page = 'screen-2'">Bottom</button>
+                <button @click="direction = 'right'; page = 'screen-2'">Right</button>
+            </div>
+        </div>
+        <div class="screen screen-2" v-if="page === 'screen-2'" key="screen-2">
+            <h2>Screen 2</h2>
+            <div class="screen-content">
+                <div>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, animi error porro quasi suscipit temporibus totam? Ad atque blanditiis deleniti dolorum exercitationem explicabo numquam, quibusdam sed voluptate. Aliquid amet animi atque beatae blanditiis consequatur ex facere, illo ipsa ipsum iusto libero molestiae necessitatibus neque nihil, non quasi quia quo rem sequi similique sit ut vitae. Esse necessitatibus nostrum numquam quasi voluptatibus! Assumenda cupiditate delectus, distinctio eveniet facilis illum ipsum laborum magni modi molestiae nam necessitatibus nemo nesciunt, officiis optio quae quos recusandae reprehenderit repudiandae, similique suscipit temporibus unde velit voluptas voluptate voluptatem voluptatum! Aliquam consequatur dolores minima porro possimus rem.
+                </div>
+                <button @click="direction = 'left'; page = 'screen-1'">Go to the screen 1</button>
+                <button @click="direction = 'top'; page = 'screen-1'">Top</button>
+                <button @click="direction = 'bottom'; page = 'screen-3'">Bottom</button>
+                <button @click="direction = 'right'; page = 'screen-3'">Go to the screen 3</button>
+            </div>
+        </div>
+        <div  class="screen screen-3" v-if="page === 'screen-3'" key="screen-3">
+            <h2>Screen 3</h2>
+            <div class="screen-content">
+                <div>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, animi error porro quasi suscipit temporibus totam? Ad atque blanditiis deleniti dolorum exercitationem explicabo numquam, quibusdam sed voluptate. Aliquid amet animi atque beatae blanditiis consequatur ex facere, illo ipsa ipsum iusto libero molestiae necessitatibus neque nihil, non quasi quia quo rem sequi similique sit ut vitae. Esse necessitatibus nostrum numquam quasi voluptatibus! Assumenda cupiditate delectus, distinctio eveniet facilis illum ipsum laborum magni modi molestiae nam necessitatibus nemo nesciunt, officiis optio quae quos recusandae reprehenderit repudiandae, similique suscipit temporibus unde velit voluptas voluptate voluptatem voluptatum! Aliquam consequatur dolores minima porro possimus rem.
+                </div>
+                <button @click="direction = 'left'; page = 'screen-2'">Go to the screen 2</button>
+                <button @click="direction = 'top'; page = 'screen-2'">Top</button>
+                <button @click="direction = 'bottom'; page = 'screen-1'">Bottom</button>
+                <button @click="direction = 'right'; page = 'screen-1'">Go to the screen 1</button>
+            </div>
+        </div>
+    </transition>
+
+</div>
+
+</body>
+</html>
