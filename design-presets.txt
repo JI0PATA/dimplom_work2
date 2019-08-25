@@ -1,0 +1,7 @@
+BG gradient: 332c92-0f2b5a
+||| gradient: c79c57-cd4718 angle: -135
+Button ec4e4e 20px
+Headers Century Gothic
+H1 80
+H2 55
+Text 17-20
