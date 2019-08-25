@@ -1,0 +1,96 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.element {
+    width: 100px;
+    height: 100px;
+    background: mintcream;
+    border-radius: 50%;
+    position: absolute;
+    box-shadow: 0 0 10px -3px #777;
+    cursor: pointer;
+}
+
+#my-app {
+    background-color: #0055ff;
+    background-image: url("../images/pattern.png");
+    width: 100%;
+    height: 100%;
+}
+
+.sections {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    transform: rotate(45deg);
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.section {
+    width: 50%;
+    height: 50%;
+    border: 1px solid #777;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    animation: showSection .2s forwards;
+    transform: scale(0);
+}
+
+@keyframes showSection {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.section:before {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #ccc;
+    transform: scale(0);
+    transition: transform .3s;
+    top: calc(50% - 5px);
+    left: calc(50% - 5px);
+    border-radius: 50%;
+}
+
+.section:hover:before {
+    transform: scale(7);
+}
+
+.section span {
+    transform: rotate(-45deg);
+}
+
+.dragSection {
+    position: absolute;
+    top: calc(50% - 20px);
+    left: calc(50% - 20px);
+    background: mintcream;
+    width: 40px;
+    height: 40px;
+    z-index: 2;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+}
